@@ -9,8 +9,8 @@ using namespace std;
     入力：整数 a, b
     出力：aとbの最大公約数
     副作用：xとyに、ax+by=gcd(a,b)の特殊解を格納する
+    計算量：O(log(a)) (a>=bのとき)
 */
-
 long long gcd_ext(long long a, long long b, long long &x, long long &y) {
     if (b == 0) {
         x = 1;
