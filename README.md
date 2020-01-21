@@ -19,3 +19,11 @@
 ## 組合せ論・mod（math_combinatorics）
 ### 二項係数・mod
 - modint（modint.cpp）：modint構造体と二項係数ライブラリまとめ
+- 二項係数（mod_binomial_coefficient.cpp）：n<=10^7, k<=10^7, p(mod)は素数
+- 小さい数での二項係数（mod_binomial_coefficient_dp.cpp）：1≦ k ≦ n ≦ 5000, p は素数である必要がない。漸化式を用いて求める。
+
+## 関数・畳み込み（math_functions)
+### 畳み込み
+- 高速フーリエ変換を利用した畳み込み
+
+## 線形代数（math_linear_algebra）未作成
