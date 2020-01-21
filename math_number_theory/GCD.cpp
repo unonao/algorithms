@@ -1,23 +1,23 @@
-/* GCD.cpp
+/* gcd.cpp
     Euclidの互除法で、最大公約数を求めるアルゴリズム
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-/*  GCD(a,b)
+/*  gcd(a,b)
     入力：整数 a, b
     出力：aとbの最大公約数
 */
-long long GCD(long long a, long long b) {
+long long gcd(long long a, long long b) {
     if (b == 0) {
         return a;
     } else {
-        return GCD(b, a % b);
+        return gcd(b, a % b);
     }
 }
 
 int main() {
-    int d = GCD(111, 30);
+    int d = gcd(111, 30);
     cout << d << endl;
 }
