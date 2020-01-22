@@ -27,7 +27,7 @@ long long lcm(long long a, long long b) {
     出力：すべての要素の最小公倍数
     注意：最小公倍数がオーバーフローする時は素因数分解を使う
 */
-long long lcm(vector<long long> vec) {
+long long lcm(const vector<long long> &vec) {
     long long l = vec[0];
     for (int i = 0; i < vec.size() - 1; i++) {
         l = lcm(l, vec[i + 1]);

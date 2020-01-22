@@ -23,7 +23,7 @@ map<long long, int> prime_factor(long long n) { // 素因数分解
     入力：整数のベクトル vec
     出力：すべての要素の最小公倍数を素因数分解したmap
 */
-map<long long, int> lcm_prime(vector<long long> vec) {
+map<long long, int> lcm_prime(const vector<long long> &vec) {
     map<long long, int> ret;
     for (int i = 0; i < vec.size(); i++) {
         map<long long, int> prime_fac = prime_factor(vec[i]);
