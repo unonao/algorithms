@@ -32,6 +32,7 @@ bool dfs(const Graph &G, int v, int c, P &num, vector<int> &color) {
 }
 
 /* is_bipartite(G,nums): 二部グラフかどうか判定
+    計算量：O(|V|+|E|)
     副作用：
         nums[i] := i 番目の連結成分の {左ノード数, 右ノード数}とする c = 1: 左、-1: 右」
 */
