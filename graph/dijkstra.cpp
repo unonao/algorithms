@@ -46,6 +46,19 @@ void dijkstra(const Graph &G, int s, vector<long long> &dis, vector<int> &pre) {
     }
 }
 
+/* get_path(prev, t)
+    入力：dijkstra で得た prev, ゴール t
+    出力： t への最短路のパス
+*/
+vector<int> get_path(const vector<int> &prev, int t) {
+    vector<int> path;
+    for (int cur = t; cur != -1; cur = prev[cur]) {
+        path.push_back(cur);
+    }
+    reverse(path.begin(), path.end());
+    return path;
+}
+
 int main() {
     int V, E, r;
     cin >> V >> E >> r;
@@ -56,8 +69,8 @@ int main() {
         G[a].push_back({b, c});
     }
     vector<long long> dis;
-    vector<int> pre;
-    dijkstra(G, r, dis, pre);
+    vector<int> prev;
+    dijkstra(G, r, dis, prev);
     for (int i = 0; i < V; i++) {
         if (dis[i] != INF) {
             cout << dis[i] << endl;
@@ -65,5 +78,6 @@ int main() {
             cout << "INF" << endl;
         }
     }
+
     return 0;
 }
