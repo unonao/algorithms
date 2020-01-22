@@ -56,8 +56,11 @@ vector<complex<double>> fft(vector<double> a, bool inv = false) {
     return fft(a_complex, inv);
 }
 
-/* convolve(a, b) :畳み込み（sum(a[j]b[k-j])）を計算する
- */
+/* convolve(a, b) : 畳み込み（sum(a[j]b[k-j])）を計算する
+    入力： a, b のベクトル
+    出力： sum(a[j]b[k-j])
+    計算量：O(NlogN)
+*/
 vector<double> convolve(vector<double> a, vector<double> b) {
     int s = a.size() + b.size() - 1;
     int t = 1;
