@@ -39,5 +39,7 @@
 - sizeによるUnion-Find木（union_find_tree_size.cpp）：併合時の工夫をsizeによって行います。集合の要素数が取得できます。
 
 ## グラフ理論（graph_theory）
+### 最短路
+- 単一始点最短路（dijkstra.cpp）：ダイクストラ法で単一視点最短路を求める。（負の辺を持たない）
 ### 探索
 - 二部グラフ判定（is_bipartite.cpp）：DFSにより二部グラフか判定し、頂点の二つの部分集合の要素数も求める
