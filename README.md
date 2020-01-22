@@ -37,3 +37,7 @@
 ### 素集合系（Union-Find Tree）
 - rankによるUnion-Find木（union_find_tree_rank.cpp）：併合時の工夫をrankによって行います
 - sizeによるUnion-Find木（union_find_tree_size.cpp）：併合時の工夫をsizeによって行います。集合の要素数が取得できます。
+
+## グラフ理論（graph_theory）
+### 探索
+- 二部グラフ判定（is_bipartite.cpp）：DFSにより二部グラフか判定し、頂点の二つの部分集合の要素数も求める
