@@ -23,9 +23,17 @@
 - 二項係数（mod_binomial_coefficient.cpp）：n<=10^7, k<=10^7, p(mod)は素数
 - 小さい数での二項係数（mod_binomial_coefficient_dp.cpp）：1≦ k ≦ n ≦ 5000, p は素数である必要がない。漸化式を用いて求める。
 
-## 代数学（math_algebra)
-代数学に関係するアルゴリズムです。
+## 線形代数（math_linear_algebra）未作成
+
+## 解析学（calculus)
+解析学に関係するアルゴリズムです。
 ### 畳み込み
 - 高速フーリエ変換を利用した畳み込み
 
-## 線形代数（math_linear_algebra）未作成
+## 幾何学（geometry）未作成
+
+
+## データ構造
+### 素集合系（Union-Find Tree）
+- rankによるUnion-Find木（union_find_tree_rank.cpp）：併合時の工夫をrankによって行います
+- sizeによるUnion-Find木（union_find_tree_size.cpp）：併合時の工夫をsizeによって行います。集合の要素数が取得できます。
