@@ -17,8 +17,7 @@ map<long long, int> prime_factor(long long n) {
             n /= i;
         }
     }
-    if (n != 1)
-        ret[n] = 1;
+    if (n != 1) ret[n] = 1;
     return ret;
 }
 

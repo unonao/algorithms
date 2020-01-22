@@ -63,7 +63,6 @@ bool is_negative(const vector<vector<long long>> &dis) {
 }
 
 int main() {
-
     int V, E;
     cin >> V >> E;
 

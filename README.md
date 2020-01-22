@@ -14,7 +14,7 @@
 #### 素数
 - 素数判定（is_prime.cpp）
 - 素因数分解（prime_factorization）
-- 素数判定のテーブル（prime_table）：エラトステネスの篩で素数かどうかの情報を保存
+- 素数の列挙（prime_table）：エラトステネスの篩で n 以下の素数を列挙
 
 ## 組合せ論・mod（math_combinatorics）
 組み合わせや数え上げに関係するアルゴリズムです。
@@ -23,14 +23,17 @@
 - 二項係数（mod_binomial_coefficient.cpp）：n<=10^7, k<=10^7, p(mod)は素数
 - 小さい数での二項係数（mod_binomial_coefficient_dp.cpp）：1≦ k ≦ n ≦ 5000, p は素数である必要がない。漸化式を用いて求める。
 
-## 線形代数（math_linear_algebra）未作成
 
 ## 解析学（calculus)
 解析学に関係するアルゴリズムです。
 #### 畳み込み
 - 高速フーリエ変換を利用した畳み込み(fft.cpp)：畳み込み（sum(a[j]b[k-j])）を計算する
 
-## 幾何学（geometry）未作成
+## 線形代数（math_linear_algebra）
+未作成
+
+## 幾何学（geometry）
+未作成
 
 
 ## データ構造

@@ -26,11 +26,11 @@ void dijkstra(const Graph &G, int s, vector<long long> &dis, vector<int> &pre) {
     int N = G.size();
     dis.resize(N, INF);
     pre.resize(N, -1);
-    priority_queue<P, vector<P>, greater<P>> pq; // the least element is top.
+    priority_queue<P, vector<P>, greater<P>> pq;  // the least element is top.
     dis[s] = 0;
     pq.emplace(dis[s], s);
     while (!pq.empty()) {
-        P p = pq.top(); // the least element
+        P p = pq.top();  // the least element
         pq.pop();
         int v = p.second;
         if (dis[v] < p.first) {

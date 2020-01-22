@@ -65,13 +65,13 @@ int main() {
     }
 
     vector<P> nums;
-    if (is_bipartite(G, nums)) { // 完全二部グラフ
+    if (is_bipartite(G, nums)) {  // 完全二部グラフ
         long long ans = 0;
-        for (auto i : nums) { // 問題の制約から1つだけなはず
+        for (auto i : nums) {  // 問題の制約から1つだけなはず
             ans += i.first * i.second;
         }
         cout << ans - M << endl;
-    } else { // 完全グラフ
+    } else {  // 完全グラフ
         cout << N * (N - 1) / 2 - M << endl;
     }
     return 0;

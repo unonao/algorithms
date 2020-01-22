@@ -14,7 +14,7 @@ using namespace std;
 struct UnionFind {
     vector<int> size, parents;
     UnionFind() {}
-    UnionFind(int n) { // make n trees.
+    UnionFind(int n) {  // make n trees.
         size.resize(n, 0);
         parents.resize(n, 0);
         for (int i = 0; i < n; i++) {
@@ -22,7 +22,7 @@ struct UnionFind {
         }
     }
     void makeTree(int x) {
-        parents[x] = x; // the parent of x is x
+        parents[x] = x;  // the parent of x is x
         size[x] = 1;
     }
     bool isSame(int x, int y) { return findRoot(x) == findRoot(y); }
@@ -47,13 +47,13 @@ struct UnionFind {
 };
 
 int main() {
-    int N;            // the number of nodes
-    int Q;            // the number of query
-    vector<int> P;    // p is a "same" or "unite" command.
-    vector<int> A, B; // a and b are nodes.
+    int N;             // the number of nodes
+    int Q;             // the number of query
+    vector<int> P;     // p is a "same" or "unite" command.
+    vector<int> A, B;  // a and b are nodes.
 
     cin >> N >> Q;
-    UnionFind uft(N); // make trees
+    UnionFind uft(N);  // make trees
 
     for (int i = 0; i < Q; i++) {
         int p, a, b;
@@ -64,7 +64,6 @@ int main() {
     }
 
     for (int i = 0; i < Q; i++) {
-
         if (P[i] == 0)
             uft.unite(A[i], B[i]);
         else if (P[i] == 1) {

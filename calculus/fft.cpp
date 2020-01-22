@@ -21,7 +21,7 @@ vector<complex<double>> fft(vector<complex<double>> a, bool inv = false) {
     for (int i = 1; i < n; i *= 2) {
         h++;
     }
-    for (int i = 0; i < n; i++) { // swap for butterfly
+    for (int i = 0; i < n; i++) {  // swap for butterfly
         int j = 0;
         for (int k = 0; k < h; k++) {
             j |= (i >> k & 1) << (h - 1 - k);
@@ -78,7 +78,7 @@ vector<double> convolve(vector<double> a, vector<double> b) {
     vector<complex<double>> c = fft(C, true);
     a.resize(s);
     for (int i = 0; i < s; i++) {
-        a[i] = c[i].real(); // 実部が答え
+        a[i] = c[i].real();  // 実部が答え
     }
     return a;
 }

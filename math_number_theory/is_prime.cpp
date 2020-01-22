@@ -9,10 +9,9 @@ using namespace std;
     出力：nが素数かの真偽値
     計算量：O(√n)
 */
-bool is_prime(long long n) { // is n prime or not
+bool is_prime(long long n) {  // is n prime or not
     for (long long i = 2; i * i <= n; i++) {
-        if (n % i == 0)
-            return false;
+        if (n % i == 0) return false;
     }
     return true;
 }

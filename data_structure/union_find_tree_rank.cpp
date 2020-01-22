@@ -13,13 +13,13 @@ using namespace std;
     isSame(x, y): x と y が同じ集合にいるか。 計算量はならし O(α(n))
     unite(x, y): x と y を同じ集合にする。計算量はならし O(α(n))
 */
-struct UnionFind { // The range of node number is from 0 to n-1
+struct UnionFind {  // The range of node number is from 0 to n-1
     //'rank[x]' is a rank of the union find tree the root of which is x.
     //'parents[x]' is the parent of x
     vector<int> rank, parents;
     // constructor
     UnionFind() {}
-    UnionFind(int n) { // make n trees.
+    UnionFind(int n) {  // make n trees.
         rank.resize(n, 0);
         parents.resize(n, 0);
         for (int i = 0; i < n; i++) {
@@ -28,7 +28,7 @@ struct UnionFind { // The range of node number is from 0 to n-1
     }
     // make a union find tree
     void makeTree(int x) {
-        parents[x] = x; // the parent of x is x
+        parents[x] = x;  // the parent of x is x
         rank[x] = 0;
     }
 
@@ -52,20 +52,20 @@ struct UnionFind { // The range of node number is from 0 to n-1
     // travel the parents of tree recursivily to find root
     int findRoot(int x) {
         if (x != parents[x]) {
-            parents[x] = findRoot(parents[x]); // change the x's parent to the root of tree.
+            parents[x] = findRoot(parents[x]);  // change the x's parent to the root of tree.
         }
         return parents[x];
     }
 };
 
 int main() {
-    int N;            // the number of nodes
-    int Q;            // the number of query
-    vector<int> P;    // p is a "same" or "unite" command.
-    vector<int> A, B; // a and b are nodes.
+    int N;             // the number of nodes
+    int Q;             // the number of query
+    vector<int> P;     // p is a "same" or "unite" command.
+    vector<int> A, B;  // a and b are nodes.
 
     cin >> N >> Q;
-    UnionFind uft(N); // make trees
+    UnionFind uft(N);  // make trees
 
     for (int i = 0; i < Q; i++) {
         int p, a, b;
@@ -76,7 +76,6 @@ int main() {
     }
 
     for (int i = 0; i < Q; i++) {
-
         if (P[i] == 0)
             uft.unite(A[i], B[i]);
         else if (P[i] == 1) {

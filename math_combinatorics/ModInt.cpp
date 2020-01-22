@@ -10,7 +10,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-template <int mod> struct ModInt {
+template <int mod>
+struct ModInt {
     int val;
     ModInt() : val(0) {}
     ModInt(long long x) : val(x >= 0 ? x % mod : (mod - (-x) % mod) % mod) {}
@@ -54,8 +55,7 @@ template <int mod> struct ModInt {
     ModInt pow(long long n) const {
         ModInt ret(1), mul(val);
         while (n > 0) {
-            if (n & 1)
-                ret *= mul;
+            if (n & 1) ret *= mul;
             mul *= mul;
             n >>= 1;
         }
@@ -75,7 +75,8 @@ template <int mod> struct ModInt {
     前処理：O(n)
     二項係数の計算：O(1)
 */
-template <class T> struct Comb {
+template <class T>
+struct Comb {
     vector<T> fact_, fact_inv_, inv_;
     Comb() {}
     Comb(int SIZE) : fact_(SIZE, 1), fact_inv_(SIZE, 1), inv_(SIZE, 1) { init(SIZE); }
@@ -107,7 +108,7 @@ template <class T> struct Comb {
     }
 };
 
-const int MOD = 1000000007; // if inv is needed, this shold be prime.
+const int MOD = 1000000007;  // if inv is needed, this shold be prime.
 using modint = ModInt<MOD>;
 Comb<modint> comb;
 
