@@ -1,7 +1,7 @@
 /* warshall_floyd.cpp
     ワーシャルフロイド法を用いて、全点間最短路を求める。
 
-    初期化：dis[i][j] = iからjへの距離（辺がなければINF） (i≠j)
+    初期化：dis[i][j] = iからjへの距離(辺がなければINF) (i≠j)
             dis[i][i] = 0
             prev[i][j] = i
 

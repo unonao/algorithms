@@ -1,9 +1,9 @@
 /* mod_binomial_coefficient_dp.cpp
-    （漸化式/DP で）modでの二項係数を求める
+    (漸化式/DP で)modでの二項係数を求める
 
     制約：
         1≦ k ≦ n ≦ 5000
-        p は素数である必要がない（The "mod p" do NOT have to be prime.）
+        p は素数である必要がない(The "mod p" do NOT have to be prime.)
 
     verified:
         AtCoder ABC021 D - 多重ループ (99点取得)
@@ -32,7 +32,7 @@ void init_nCk() {
     }
 }
 
-/*  nCk :MODでの二項係数を求める（前処理 int_nCk が必要）
+/*  nCk :MODでの二項係数を求める(前処理 int_nCk が必要)
     計算量:O(1)
 */
 long long nCk(int n, int k) {

@@ -9,7 +9,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/* UnionFind：素集合系管理の構造体（union by rank）
+/* UnionFind：素集合系管理の構造体(union by rank)
     isSame(x, y): x と y が同じ集合にいるか。 計算量はならし O(α(n))
     unite(x, y): x と y を同じ集合にする。計算量はならし O(α(n))
 */

@@ -1,5 +1,5 @@
 /* is_bipartite.cpp
-    二部グラフ判定を深さ優先探索（DFS）で行う
+    二部グラフ判定を深さ優先探索(DFS)で行う
 
     verified: AtCoder CODE FESTIVAL 2017 qual B  C - 3 Steps
         https://code-festival-2017-qualb.contest.atcoder.jp/tasks/code_festival_2017_qualb_c

@@ -34,7 +34,7 @@ void init_nCk(int SIZE) {
     }
 }
 
-/*  nCk :MODでの二項係数を求める（前処理 int_nCk が必要）
+/*  nCk :MODでの二項係数を求める(前処理 int_nCk が必要)
     計算量:O(1)
 */
 long long nCk(int n, int k) {
