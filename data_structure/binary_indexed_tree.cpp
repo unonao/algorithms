@@ -20,6 +20,7 @@ using namespace std;
     ・add(i,a): a_i += a とする
     ・sum(i): a_1 + a_2 + ... + a_i を計算する
     ・query(l,r): [l,r) の区間の和を求める
+    計算量は全て O(logn)
 */
 template <typename T>
 struct BIT {
