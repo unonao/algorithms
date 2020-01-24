@@ -33,7 +33,8 @@
 未作成
 
 ## 幾何学(geometry)
-未作成
+- 基本(basic.cpp): 基本となる点, 線, 円, 多角形を定義
+- 3点の関係(ccw.cpp): 反時計, 時計回り, 一直線などの 3点の関係を判定
 
 
 ## データ構造(data_structure)
@@ -51,7 +52,7 @@
 
 ## 木(tree)
 木に特有のアルゴリズムやデータ構造です。
-- LCA(lca_doubling.cpp): ダブリングにより最近共通祖先を求めるデータ構造
+- LCA(lca_doubling.cpp): ダブリングにより最近共通祖先(Lowest Common Ancestor)を求める
 
 
 ## グラフ理論(graph_theory)
