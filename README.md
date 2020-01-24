@@ -52,7 +52,7 @@
 
 ## 木(tree)
 木に特有のアルゴリズムやデータ構造です。
-- LCA(lca_doubling.cpp): ダブリングにより最近共通祖先(Lowest Common Ancestor)を求める
+- LCA(lca_doubling.cpp): ダブリングにより最近共通祖先(Lowest Common Ancestor)を求める。2頂点間の距離を求めたり、ある点がパス上に存在するかを対数時間で判定できる。
 
 
 ## グラフ理論(graph_theory)

@@ -16,6 +16,8 @@ using Graph = vector<vector<Edge>>;
 
 /* LCA(G, root): 木 G に対する根を root として Lowest Common Ancestor を求める構造体
     query(u,v): u と v の LCA を求める。計算量 O(logn)
+    dist(u,v): u と v の距離を求める。計算量 O(logn)
+    is_on_path(u,v,a): u, v を繋ぐパス上に a が存在するかを判定する。計算量 O(logn)
     前処理: O(nlogn)時間, O(nlogn)空間
 */
 struct LCA {
@@ -64,6 +66,8 @@ struct LCA {
         }
         return parent[0][u];
     }
+    int dist(int u, int v) { return depth[u] + depth[v] - 2 * depth[query(u, v)]; }
+    bool is_on_path(int u, int v, int a) { return dist(u, a) + dist(a, v) == dist(u, v); }
 };
 
 int main() {
