@@ -36,7 +36,8 @@
 未作成
 
 
-## データ構造
+## データ構造(data_structure)
+様々なデータ構造です。
 #### 素集合系(Union-Find Tree)
 - rankによるUnion-Find木(union_find_tree_rank.cpp): 併合時の工夫をrankによって行う
 - sizeによるUnion-Find木(union_find_tree_size.cpp): 併合時の工夫をsizeによって行う。集合の要素数が取得できる
@@ -47,6 +48,11 @@
 #### Binary Indexed Tree(BIT)
 - BIT(binary_indexed_tree.cpp): 区間和の更新や計算を高速に行う。転倒数の計算にも使える
 - BIT上での二分探索(binary_search_on_BIT.cpp): BITの拡張版。a_1 + a_2 + ... + a_x >= w となるような最小の x を求められる。集合の管理にも使用でき、「集合の中で w 番目に小さいもの」や「ある要素が何番目に小さいか」を高速に取得可能
+
+## 木(tree)
+木に特有のアルゴリズムやデータ構造です。
+- LCA(lca_doubling.cpp): ダブリングにより最近共通祖先を求めるデータ構造
+
 
 ## グラフ理論(graph_theory)
 #### 最短路
