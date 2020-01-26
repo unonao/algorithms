@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
-#define rep(i, n) for (int i = 0; i < (n); i++)
+#define LOOP(n) for (int _i = 0; _i < (n); _i++)
+#define REP(i, n) for (int i = 0; i < (n); ++i)
+#define FOR(i, r, n) for (int i = (r); i < (n); ++i)
 #define ALL(obj) begin(obj), end(obj)
 using namespace std;
 using ll = long long;
