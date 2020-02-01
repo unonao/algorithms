@@ -55,7 +55,7 @@
 - LCA(lca_doubling.cpp): ダブリングにより最近共通祖先(Lowest Common Ancestor)を求める。2頂点間の距離を求めたり、ある点がパス上に存在するかを対数時間で判定できる。
 
 
-## グラフ理論(graph_theory)
+## グラフ理論(graph)
 #### 最短路
 - 単一始点最短路(bellman_ford.cpp): ベルマンフォード法で単一視点最短路を求める。(負の辺の存在可・負閉路の検出可)
 - 単一始点最短路(dijkstra.cpp): ダイクストラ法で単一視点最短路を求める。(負の辺を持たない)
@@ -67,3 +67,7 @@
 #### 典型的
 - 最長増加部分列(longest_increasing_subsequence.cpp): LISを求める。広義単調でも可
 - 最長減少部分列(longest_decreasing_subsequence.cpp): LDS?を求める。広義減少でも可
+
+## グラフのネットワークフロー(graph_flow)
+#### 最大流
+- 最大流(max_flow_ford_fulkerson.cpp): Ford-Fulkersonのアルゴリズムで最大流を求める。これを利用して最大二部マッチングを求めることも可
