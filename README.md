@@ -62,7 +62,7 @@
 - 全点間最短路(warshall_floyd.cpp): ワーシャルフロイド法で全点間最短路を求める。(負閉路の検出可)
 #### 探索
 - 二部グラフ判定(is_bipartite.cpp): DFSにより二部グラフか判定し、頂点の二つの部分集合の要素数も求める
-
+- 橋・関節点列挙(low_link.cpp): グラフ上の橋と関節点をO(V+E)で列挙する
 ## 動的計画法(dynamic_programming)
 #### 典型的
 - 最長増加部分列(longest_increasing_subsequence.cpp): LISを求める。広義単調でも可
