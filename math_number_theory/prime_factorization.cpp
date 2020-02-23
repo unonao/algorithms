@@ -1,5 +1,8 @@
 /* prime_factorization.cpp
     素因数分解
+
+    verified: AOJ NTL_1_A
+        http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A&lang=ja
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -26,8 +29,12 @@ int main() {
     cin >> N;
     map<long long, int> prime_fac = prime_factor(N);
 
+    cout << N << ":";
     for (auto p : prime_fac) {
-        cout << p.first << ":" << p.second << endl;
+        for (int i = 0; i < p.second; i++) {
+            cout << " " << p.first;
+        }
     }
+    cout << endl;
     return 0;
 }
