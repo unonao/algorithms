@@ -21,7 +21,7 @@ const int MOD = 1e9 + 7;
 vector<long long> fact_inv, inv;
 
 /*  init_nCk :二項係数のための前処理
-    計算量:O(n)
+    計算量:O(k)
 */
 void init_nCk(int SIZE) {
     fact_inv.resize(SIZE + 5);
