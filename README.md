@@ -21,6 +21,8 @@
 #### 二項係数・mod
 - modint(modint.cpp): modint構造体と二項係数ライブラリまとめ
 - 二項係数(mod_binomial_coefficient.cpp): n<=10^7, k<=10^7, p(mod)は素数
+- nが巨大な二項係数(mod_binomial_coefficient_big.cpp): n<=10^9, k<=10^7, p(mod)は素数
+- nが固定の時の二項係数(mod_binomial_coefficient_big_static.cpp): n<=10^9で固定, k<=10^7, p(mod)は素数
 - 小さい数での二項係数(mod_binomial_coefficient_dp.cpp): 1≦ k ≦ n ≦ 5000, p は素数である必要がない。漸化式を用いて求める。
 
 

@@ -74,11 +74,15 @@ struct ModInt {
 /* Comb：modintで二項係数を計算する構造体
     前処理：O(n)
     二項係数の計算：O(1)
+    制約：
+        n<=10^7
+        k<=10^7
+        p(mod)は素数
 */
 template <class T>
 struct Comb {
     vector<T> fact_, fact_inv_, inv_;
-    Comb() {}
+    // Comb() {}
     Comb(int SIZE) : fact_(SIZE, 1), fact_inv_(SIZE, 1), inv_(SIZE, 1) { init(SIZE); }
     void init(int SIZE) {
         fact_.assign(SIZE, 1), fact_inv_.assign(SIZE, 1), inv_.assign(SIZE, 1);
@@ -93,6 +97,10 @@ struct Comb {
         assert(!(n < k));
         assert(!(n < 0 || k < 0));
         return fact_[n] * fact_inv_[k] * fact_inv_[n - k];
+    }
+    T nHk(int n, int k) {
+        assert(!(n < 0 || k < 0));
+        return nCk(n + k - 1, k);
     }
     T fact(int n) {
         assert(!(n < 0));
@@ -110,12 +118,11 @@ struct Comb {
 
 const int MOD = 1000000007;  // if inv is needed, this shold be prime.
 using modint = ModInt<MOD>;
-Comb<modint> comb;
+Comb<modint> comb(1000000);
 
 int main() {
     long long N, M, K;
     cin >> N >> M >> K;
-    comb.init(1000000);
     modint sum = 0;
     for (int i = 0; i <= N - 1; ++i) {
         for (int j = 0; j <= M - 1; ++j) {

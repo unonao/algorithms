@@ -4,6 +4,9 @@
     制約：
         1≦ k ≦ n ≦ 5000
         p は素数である必要がない(The "mod p" do NOT have to be prime.)
+    計算量：
+        前処理 O(MAX_N*MAX_N)
+        クエリ O(1)
 
     verified:
         AtCoder ABC021 D - 多重ループ (99点取得)
