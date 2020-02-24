@@ -8,7 +8,7 @@
     負閉路の検出：dis[i][i] < 0 となる i が存在するか
 
     verified:
-        https://atcoder.jp/contests/abc143/tasks/abc143_e
+        http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C&lang=ja
 */
 
 #include <bits/stdc++.h>
