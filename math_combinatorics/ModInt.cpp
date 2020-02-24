@@ -70,6 +70,8 @@ struct ModInt {
     }
     static int get_mod() { return mod; }
 };
+const int MOD = 1000000007;  // if inv is needed, this shold be prime.
+using modint = ModInt<MOD>;
 
 /* Comb：modintで二項係数を計算する構造体
     前処理：O(n)
@@ -116,8 +118,6 @@ struct Comb {
     }
 };
 
-const int MOD = 1000000007;  // if inv is needed, this shold be prime.
-using modint = ModInt<MOD>;
 Comb<modint> comb(1000000);
 
 int main() {
