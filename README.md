@@ -41,7 +41,7 @@
 
 
 ## データ構造(data_structure)
-様々なデータ構造です。
+  様々なデータ構造です。
 #### 素集合系(Union-Find Tree)
 - rankによるUnion-Find木(union_find_tree_rank.cpp): 併合時の工夫をrankによって行う
 - sizeによるUnion-Find木(union_find_tree_size.cpp): 併合時の工夫をsizeによって行う。集合の要素数が取得できる
@@ -65,7 +65,8 @@
 
 ## グラフ理論(graph)
 #### dfs・bfs
-- トポロジカルソート(topological_sort.cpp): BFSでトポロジカルソート
+- トポロジカルソート(BFS)(topological_sort_BFS.cpp): BFSでトポロジカルソート
+- トポロジカルソート(DFS)(topological_sort_DFS.cpp): DFSでトポロジカルソート
 
 #### 最短路
 - 単一始点最短路(bellman_ford.cpp): ベルマンフォード法で単一視点最短路を求める。(負の辺の存在可・負閉路の検出可)
