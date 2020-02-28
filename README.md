@@ -47,7 +47,13 @@
 - sizeによるUnion-Find木(union_find_tree_size.cpp): 併合時の工夫をsizeによって行う。集合の要素数が取得できる
 
 #### セグメント木
-- RMQ(range_minimum_query.cpp): 区間での最小要素を管理します
+- RMQ(range_minimum_query.cpp): 一点更新RMQ
+- RMQ・RUQ(range_minimum_query_RUQ.cpp): 区間更新RMQ
+- RMQ・RAQ(range_minimum_query_RAQ.cpp): 区間加算RMQ
+- セグ木(segment_tree.cpp): モノイドに対して使える
+- 遅延評価セグ木(segment_tree_lazy.cpp): 作用付きモノイドに対して使える
+- 作用が区間に比例する遅延評価セグ木(segment_tree_lazy_proportional.cpp): 作用が区間に比例する場合に使える
+
 
 #### Binary Indexed Tree(BIT)
 - BIT(binary_indexed_tree.cpp): 区間和の更新や計算を高速に行う。転倒数の計算にも使える
@@ -56,9 +62,11 @@
 ## 木(tree)
 木に特有のアルゴリズムやデータ構造です。
 - LCA(lca_doubling.cpp): ダブリングにより最近共通祖先(Lowest Common Ancestor)を求める。2頂点間の距離を求めたり、ある点がパス上に存在するかを対数時間で判定できる。
-- 最小全域木(minimum_spanning_tree.cpp): クラスカル法によって最小全域木を求める構造体
 
 ## グラフ理論(graph)
+#### dfs・bfs
+- トポロジカルソート(topological_sort.cpp): BFSでトポロジカルソート
+
 #### 最短路
 - 単一始点最短路(bellman_ford.cpp): ベルマンフォード法で単一視点最短路を求める。(負の辺の存在可・負閉路の検出可)
 - 単一始点最短路(dijkstra.cpp): ダイクストラ法で単一視点最短路を求める。(負の辺を持たない)
@@ -66,6 +74,11 @@
 #### 探索
 - 二部グラフ判定(is_bipartite.cpp): DFSにより二部グラフか判定し、頂点の二つの部分集合の要素数も求める
 - 橋・関節点列挙(low_link.cpp): グラフ上の橋と関節点をO(V+E)で列挙する
+
+#### その他
+- 最小全域木(minimum_spanning_tree.cpp): クラスカル法によって最小全域木を求める構造体
+
+
 ## 動的計画法(dynamic_programming)
 #### 典型的
 - 最長増加部分列(longest_increasing_subsequence.cpp): LISを求める。広義単調でも可
