@@ -15,7 +15,7 @@ using Graph = vector<vector<Edge>>;
 /* topo_sort(G): グラフG をトポロジカルソート
     返り値: トポロジカルソートされた頂点番号
     計算量: O(|E|+|V|)
-    返り値のサイズがグラフより小さければ閉路が存在する
+    閉路の存在は分からない
     （大きなグラフではスタックオーバーフローの可能性があるので、dfsではなくbfsの方が良い）
  */
 void dfs(const Graph &G, int v, vector<bool> &used, vector<int> &ans) {
@@ -31,7 +31,7 @@ vector<int> topo_sort(const Graph &G) {  // bfs
     vector<int> ans;
     int n = (int)G.size();
     vector<bool> used(n, false);
-    for (int v = 0; v < n; v++) {
+    for (int v = 0; v < n; v++) {  // 未探索の頂点ごとにDFS
         if (!used[v]) dfs(G, v, used, ans);
     }
     reverse(ans.begin(), ans.end());  // 逆向きなのでひっくり返す
