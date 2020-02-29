@@ -1,5 +1,8 @@
 /* prime_table.cpp
     エラトステネスの篩で素数かどうかの情報を保存
+
+    verified: AOJ Prime Gap
+        http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1276#
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -15,7 +18,7 @@ vector<bool> prime_table(int n) {
     if (n >= 1) prime[1] = false;
     for (int i = 2; i * i <= n; i++) {
         if (!prime[i]) continue;
-        for (int j = i + i; j <= n; j += i) {
+        for (int j = i * i; j <= n; j += i) {
             prime[j] = false;
         }
     }
@@ -23,9 +26,13 @@ vector<bool> prime_table(int n) {
 }
 
 int main() {
+    vector<bool> p_table = prime_table(2000000);
     int N;
-    cin >> N;
-
-    vector<bool> p_table = prime_table(N);
-    cout << p_table[N] << endl;
+    while (cin >> N) {
+        if (N == 0) break;
+        int pre = N, next = N;
+        while (!p_table[pre]) pre--;
+        while (!p_table[next]) next++;
+        cout << next - pre << endl;
+    }
 }

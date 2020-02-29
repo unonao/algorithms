@@ -1,5 +1,8 @@
 /* is_prime.cpp
     素数判定
+
+    verified: AOJ ALDS1_1_C Prime Numbers
+        http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C&lang=ja
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,5 +22,11 @@ bool is_prime(long long n) {  // is n prime or not
 int main() {
     int N;
     cin >> N;
-    cout << is_prime(N) << endl;
+    int ans = 0;
+    for (int i = 0; i < N; i++) {
+        int k;
+        cin >> k;
+        if (is_prime(k)) ans++;
+    }
+    cout << ans << endl;
 }
