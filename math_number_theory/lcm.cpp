@@ -1,5 +1,8 @@
 /* lcm.cpp
     gcdを利用して最小公倍数を求めるアルゴリズム
+
+    verified: AtCoder ABC070 C - Multiple Clocks
+        https://atcoder.jp/contests/abc070/tasks/abc070_c
 */
 
 #include <bits/stdc++.h>
@@ -29,7 +32,7 @@ long long lcm(long long a, long long b) {
 */
 long long lcm(const vector<long long> &vec) {
     long long l = vec[0];
-    for (int i = 0; i < vec.size() - 1; i++) {
+    for (int i = 0; i < (int)vec.size() - 1; i++) {
         l = lcm(l, vec[i + 1]);
     }
     return l;
