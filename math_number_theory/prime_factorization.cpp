@@ -12,22 +12,25 @@ using namespace std;
     出力：nの素因数分解
     計算量：O(√n)前後
 */
-map<long long, int> prime_factor(long long n) {
-    map<long long, int> ret;
-    for (long long i = 2; i * i <= n; i++) {
+template <typename T>
+vector<pair<T, T>> prime_factor(T n) {
+    vector<pair<T, T>> ret;
+    for (T i = 2; i * i <= n; i++) {
+        T tmp = 0;
         while (n % i == 0) {
-            ret[i]++;
+            tmp++;
             n /= i;
         }
+        ret.push_back(make_pair(i, tmp));
     }
-    if (n != 1) ret[n] = 1;
+    if (n != 1) ret.push_back(make_pair(n, 1));
     return ret;
 }
 
 int main() {
-    int N;
+    long long N;
     cin >> N;
-    map<long long, int> prime_fac = prime_factor(N);
+    vector<pair<long long, long long>> prime_fac = prime_factor(N);
 
     cout << N << ":";
     for (auto p : prime_fac) {
