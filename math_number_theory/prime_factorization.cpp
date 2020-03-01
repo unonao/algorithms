@@ -13,24 +13,24 @@ using namespace std;
     計算量：O(√n)前後
 */
 template <typename T>
-vector<pair<T, T>> prime_factor(T n) {
-    vector<pair<T, T>> ret;
+map<T, T> prime_factor(T n) {
+    map<T, T> ret;
     for (T i = 2; i * i <= n; i++) {
         T tmp = 0;
         while (n % i == 0) {
             tmp++;
             n /= i;
         }
-        ret.push_back(make_pair(i, tmp));
+        ret[i] = tmp;
     }
-    if (n != 1) ret.push_back(make_pair(n, 1));
+    if (n != 1) ret[n] = 1;
     return ret;
 }
 
 int main() {
     long long N;
     cin >> N;
-    vector<pair<long long, long long>> prime_fac = prime_factor(N);
+    map<long long, long long> prime_fac = prime_factor(N);
 
     cout << N << ":";
     for (auto p : prime_fac) {
