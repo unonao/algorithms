@@ -15,6 +15,11 @@
         X ex = numeric_limits<int>::max();
         auto fx = [ex](X x1, X x2) -> X { return (x1 == ex) ? x2 : ((x2 == ex) ? x1 : gcd(x1, x2)); };
         SegTree<X> segGcd(n, fx, ex);
+    bitで表した集合とor:
+        using X = int;
+        auto fx = [](X x1, X x2) -> X { return x1 | x2; };
+        X ex = 0;
+        SegTree<X> seg(N, fx, ex);
 
     unverified: AOJ DSL_2_A
         http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A&lang=jp

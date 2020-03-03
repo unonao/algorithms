@@ -36,9 +36,10 @@ struct UnionFind {  // The range of node number is from 0 to n-1
     bool isSame(int x, int y) { return findRoot(x) == findRoot(y); }
 
     // unite two tree
-    void unite(int x, int y) {
+    bool unite(int x, int y) {
         x = findRoot(x);
         y = findRoot(y);
+        if (x == y) return false;
         if (rank[x] > rank[y]) {
             parents[y] = x;
         } else {
@@ -47,6 +48,7 @@ struct UnionFind {  // The range of node number is from 0 to n-1
                 rank[y]++;
             }
         }
+        return true;
     }
 
     // travel the parents of tree recursivily to find root

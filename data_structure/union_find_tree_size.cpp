@@ -1,6 +1,9 @@
 /*  union_find_tree_size.cpp
     素集合系を union-find tree で管理するライブラリ
     併合時の工夫：union by size
+
+    verified: AtCoder ABC157 D - Friend Suggestions
+        https://atcoder.jp/contests/abc157/tasks/abc157_d
 */
 
 #include <bits/stdc++.h>
@@ -26,9 +29,10 @@ struct UnionFind {
         size[x] = 1;
     }
     bool isSame(int x, int y) { return findRoot(x) == findRoot(y); }
-    void unite(int x, int y) {
+    bool unite(int x, int y) {
         x = findRoot(x);
         y = findRoot(y);
+        if (x == y) return false;
         if (size[x] > size[y]) {
             parents[y] = x;
             size[x] += size[y];
@@ -36,6 +40,7 @@ struct UnionFind {
             parents[x] = y;
             size[y] += size[x];
         }
+        return true;
     }
     int findRoot(int x) {
         if (x != parents[x]) {
@@ -47,31 +52,40 @@ struct UnionFind {
 };
 
 int main() {
-    int N;             // the number of nodes
-    int Q;             // the number of query
-    vector<int> P;     // p is a "same" or "unite" command.
-    vector<int> A, B;  // a and b are nodes.
-
-    cin >> N >> Q;
-    UnionFind uft(N);  // make trees
-
-    for (int i = 0; i < Q; i++) {
-        int p, a, b;
-        cin >> p >> a >> b;
-        P.push_back(p);
-        A.push_back(a);
-        B.push_back(b);
+    int N, M, K;
+    cin >> N >> M >> K;
+    UnionFind uf(N);              // Union-Find Tree で考える
+    vector<int> edges_num(N, 0);  // 自身から出る辺の数
+    vector<int> A(M), B(M);
+    for (int i = 0; i < M; i++) {
+        cin >> A.at(i) >> B.at(i);
+        A[i]--, B[i]--;
+        edges_num[A[i]]++;
+        edges_num[B[i]]++;
+        uf.unite(A[i], B[i]);
+    }
+    vector<int> C(K), D(K);
+    for (int i = 0; i < K; i++) {
+        cin >> C.at(i) >> D.at(i);
+        C[i]--, D[i]--;
     }
 
-    for (int i = 0; i < Q; i++) {
-        if (P[i] == 0)
-            uft.unite(A[i], B[i]);
-        else if (P[i] == 1) {
-            if (uft.isSame(A[i], B[i]))
-                cout << "1\n";
-            else
-                cout << "0\n";
+    vector<int> ans(N);
+    for (int i = 0; i < N; i++) {
+        ans[i] = uf.treeSize(i) - 1 - edges_num[i];
+    }
+    for (int i = 0; i < K; i++) {  // 同じ連結成分にあるブロック関係を引く
+        if (uf.isSame(C[i], D[i])) {
+            ans[C[i]]--;
+            ans[D[i]]--;
         }
     }
+
+    for (int i = 0; i < N; i++) {
+        cout << ans[i];
+        if (i != (int)ans.size() - 1) cout << " ";
+    }
+    cout << endl;
+
     return 0;
 }
