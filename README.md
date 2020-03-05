@@ -54,10 +54,10 @@
 - 遅延評価セグ木(segment_tree_lazy.cpp): 作用付きモノイドに対して使える
 - 作用が区間に比例する遅延評価セグ木(segment_tree_lazy_proportional.cpp): 作用が区間に比例する場合に使える
 
-
 #### Binary Indexed Tree(BIT)
-- BIT(binary_indexed_tree.cpp): 区間和の更新や計算を高速に行う。転倒数の計算にも使える
-- BIT上での二分探索(binary_search_on_BIT.cpp): BITの拡張版。a_1 + a_2 + ... + a_x >= w となるような最小の x を求められる。集合の管理にも使用でき、「集合の中で w 番目に小さいもの」や「ある要素が何番目に小さいか」を高速に取得可能
+- BIT(binary_indexed_tree.cpp): 区間和の更新や計算を高速に行う。転倒数の計算にも使える。集合の管理にも使用でき「集合の中で w 番目に小さいもの」や「ある要素が何番目に小さいか」を高速に取得可能
+- BIT・RAQ(binary_indexed_tree_RAQ.cpp): 区間和の更新や計算を高速に行う。区間加算対応
+- BIT2D(binary_indexed_tree_2D.cpp): 二次元対応したBIT
 
 ## 木(tree)
 木に特有のアルゴリズムやデータ構造です。
