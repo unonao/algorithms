@@ -26,12 +26,8 @@ struct BIT {
     }
 
     void add_sub(int p, int i, int x) {
-        if (i == 0) {
-            return;
-        } else {
-            for (int idx = i; idx < n; idx += (idx & -idx)) {
-                bit[p][idx] += x;
-            }
+        for (int idx = i; idx < n; idx += (idx & -idx)) {
+            bit[p][idx] += x;
         }
     }
     void add(int l, int r, T x) {  // [l,r) に加算
