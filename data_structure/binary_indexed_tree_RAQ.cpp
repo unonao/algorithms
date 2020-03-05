@@ -8,9 +8,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include <bits/stdc++.h>
-using namespace std;
-
 /* BIT: 区間和の更新や計算を行う構造体
     初期値は a_1 = a_2 = ... = a_n = 0
     ・add(l,r,x): [l,r) に x を加算する
@@ -22,8 +19,9 @@ template <typename T>
 struct BIT {
     int n;             // 要素数
     vector<T> bit[2];  // データの格納先
-    BIT(int n_) : n(n_ + 1) { init(n); }
-    void init(int n) {
+    BIT(int n_) { init(n_); }
+    void init(int n_) {
+        n = n_ + 1;
         for (int p = 0; p < 2; p++) bit[p].assign(n, 0);
     }
 
