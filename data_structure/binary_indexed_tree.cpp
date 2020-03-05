@@ -7,9 +7,9 @@
 
     応用: 転倒数の計算( i<j において a_i > a_j となる数を数える)
         j(0~n-1)について以下を繰り返す
-            1. j-sum(j)を答えに加える
-            2. add(a[j],1)
-        sum(j)は i<j における a_i<= a_j となる数なので、 j-sum(j) で j を固定したときの転倒数が求まる
+            1. j-sum(a_j)を答えに加える
+            2. add(a_j,1)
+        sum(a_j)は i<j における a_i<= a_j となる数なので、 j-sum(a_j) で j を固定したときの転倒数が求まる
 
     応用: 集合の中で w 番目に小さいものや、ある要素が何番目に小さいかが高速に分かる
         ・add(a,1): 集合への要素 a の追加(a 番目を 1 にする)
@@ -43,7 +43,7 @@ struct BIT {
         if (i == 0) {
             return;
         } else {
-            for (int idx = i; idx <= n; idx += (idx & -idx)) {
+            for (int idx = i; idx < n; idx += (idx & -idx)) {
                 bit[idx] += x;
             }
         }
@@ -67,7 +67,7 @@ struct BIT {
             int x = 0, r = 1;
             while (r < n) r = r << 1;
             for (int len = r; len > 0; len = len >> 1) {
-                if (x + len <= n && bit[x + len] < w) {
+                if (x + len < n && bit[x + len] < w) {
                     w -= bit[x + len];
                     x += len;
                 }
@@ -80,7 +80,7 @@ struct BIT {
 int main() {
     int q;
     cin >> q;
-    BIT<int> bit(3e5);
+    BIT<int> bit(2e5);
     vector<int> T(q), X(q);
     for (int i = 0; i < q; i++) {
         cin >> T.at(i) >> X.at(i);

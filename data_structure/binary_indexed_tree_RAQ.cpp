@@ -29,7 +29,7 @@ struct BIT {
         if (i == 0) {
             return;
         } else {
-            for (int idx = i; idx <= n; idx += (idx & -idx)) {
+            for (int idx = i; idx < n; idx += (idx & -idx)) {
                 bit[p][idx] += x;
             }
         }
@@ -57,7 +57,7 @@ struct BIT {
 int main() {
     int n, q;
     cin >> n >> q;
-    BIT<int> raq(2e5);
+    BIT<int> raq(n);
 
     vector<int> ans;
     for (int i = 0; i < q; i++) {
