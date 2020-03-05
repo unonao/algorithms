@@ -40,12 +40,8 @@ struct BIT {
     BIT(int n_) : n(n_ + 1), bit(n, 0) {}
 
     void add(int i, T x) {
-        if (i == 0) {
-            return;
-        } else {
-            for (int idx = i; idx < n; idx += (idx & -idx)) {
-                bit[idx] += x;
-            }
+        for (int idx = i; idx < n; idx += (idx & -idx)) {
+            bit[idx] += x;
         }
     }
 
