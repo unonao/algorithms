@@ -25,7 +25,7 @@ struct BIT {
         for (int p = 0; p < 2; p++) bit[p].assign(n, 0);
     }
 
-    void add_sub(int p, int i, int x) {
+    void add_sub(int p, int i, T x) {
         for (int idx = i; idx < n; idx += (idx & -idx)) {
             bit[p][idx] += x;
         }

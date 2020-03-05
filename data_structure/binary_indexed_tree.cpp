@@ -57,7 +57,7 @@ struct BIT {
     // [l,r)
     T query(int l, int r) { return sum(r - 1) - sum(l - 1); }
 
-    int lower_bound(int w) {
+    int lower_bound(T w) {
         if (w <= 0) {
             return 0;
         } else {
