@@ -9,12 +9,13 @@
 - 拡張Euclidの互除法(gcd_extend.cpp): ax+by=gcd(a,b)の解を1つ求める
 - 最小公倍数(lcm.cpp): gcdを利用して最小公倍数を求める
 - 素因数分解した最小公倍数(lcm_prime.cpp): 素因数分解の形で最小公倍数を求める(オーバーフローする場合など)
-- 約数列挙(divisor.cpp)
+- 約数列挙(divisor.cpp):
 - べき乗(power.cpp)
 
 #### 素数
 - 素数判定(is_prime.cpp)
-- 素因数分解(prime_factorization)
+- 素因数分解(prime_factorization.cpp): O(√n)
+- 前処理付き素因数分解(prime_factorization_spf.cpp): 初期化は O(N log log N)、クエリは O(log n)
 - 素数の列挙(prime_table): エラトステネスの篩で n 以下の素数を列挙
 
 ## 組合せ論・mod(math_combinatorics)
