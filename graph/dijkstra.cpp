@@ -17,15 +17,15 @@ using Graph = vector<vector<Edge>>;
 using P = pair<long, int>;
 const long long INF = 1LL << 60;
 
-/* dijkstra(G,s,dis,pre)
-    入力：グラフ G, 開始点 s, 距離を格納する dis, 最短経路の前の点を記録するpre
+/* dijkstra(G,s,dis,prev)
+    入力：グラフ G, 開始点 s, 距離を格納する dis, 最短経路の前の点を記録するprev
     計算量：O(|E|log|V|)
-    副作用：dis, preが書き換えられる
+    副作用：dis, prevが書き換えられる
 */
-void dijkstra(const Graph &G, int s, vector<long long> &dis, vector<int> &pre) {
+void dijkstra(const Graph &G, int s, vector<long long> &dis, vector<int> &prev) {
     int N = G.size();
     dis.resize(N, INF);
-    pre.resize(N, -1);
+    prev.resize(N, -1);
     priority_queue<P, vector<P>, greater<P>> pq;  // the least element is top. first:cost, second: node
     dis[s] = 0;
     pq.emplace(dis[s], s);
@@ -39,7 +39,7 @@ void dijkstra(const Graph &G, int s, vector<long long> &dis, vector<int> &pre) {
         for (auto &e : G[v]) {
             if (dis[e.to] > dis[v] + e.cost) {
                 dis[e.to] = dis[v] + e.cost;
-                pre[e.to] = v;
+                prev[e.to] = v;
                 pq.emplace(dis[e.to], e.to);
             }
         }
