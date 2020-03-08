@@ -45,6 +45,6 @@ int main() {
     // ios::sync_with_stdio(false);
 
     cin >> N;
-    cout << N << endl;
+
     return 0;
 }
