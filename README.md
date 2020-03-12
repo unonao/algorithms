@@ -60,9 +60,6 @@
 - BIT・RAQ(binary_indexed_tree_RAQ.cpp): 区間和の更新や計算を高速に行う。区間加算対応
 - BIT2D(binary_indexed_tree_2D.cpp): 二次元対応したBIT
 
-## 木(tree)
-木に特有のアルゴリズムやデータ構造です。
-- LCA(lca_doubling.cpp): ダブリングにより最近共通祖先(Lowest Common Ancestor)を求める。2頂点間の距離を求めたり、ある点がパス上に存在するかを対数時間で判定できる。
 
 ## グラフ理論(graph)
 #### dfs・bfs
@@ -80,12 +77,16 @@
 #### その他
 - 最小全域木(minimum_spanning_tree.cpp): クラスカル法によって最小全域木を求める構造体
 
+## グラフのネットワークフロー(graph_flow)
+#### 最大流
+- 最大流(max_flow_ford_fulkerson.cpp): Ford-Fulkersonのアルゴリズムで最大流を求める。これを利用して最大二部マッチングを求めることも可
+
+## 木(graph_tree)
+木に特有のアルゴリズムやデータ構造です。
+- LCA(lca_doubling.cpp): ダブリングにより最近共通祖先(Lowest Common Ancestor)を求める。2頂点間の距離を求めたり、ある点がパス上に存在するかを対数時間で判定できる。
+- 木の直径(tree_diamiter.cpp): 木の直径を求める
 
 ## 動的計画法(dynamic_programming)
 #### 典型的
 - 最長増加部分列(longest_increasing_subsequence.cpp): LISを求める。広義単調でも可
 - 最長減少部分列(longest_decreasing_subsequence.cpp): LDS?を求める。広義減少でも可
-
-## グラフのネットワークフロー(graph_flow)
-#### 最大流
-- 最大流(max_flow_ford_fulkerson.cpp): Ford-Fulkersonのアルゴリズムで最大流を求める。これを利用して最大二部マッチングを求めることも可
