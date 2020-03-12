@@ -9,20 +9,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+template <typename T>
 struct Edge {
-    long long to;
-    long long cost;
+    int to;
+    T cost;
 };
-using Graph = vector<vector<Edge>>;
-using P = pair<long, int>;
-const long long INF = 1LL << 60;
+using Graph = vector<vector<Edge<long long>>>;  // 距離/コストの型 T を指定する
+const long long INF = (1LL << 60);              // 型 T のINF (完全な最大値は取らないように)
 
 /* dijkstra(G,s,dis,prev)
     入力：グラフ G, 開始点 s, 距離を格納する dis, 最短経路の前の点を記録するprev
     計算量：O(|E|log|V|)
     副作用：dis, prevが書き換えられる
 */
-void dijkstra(const Graph &G, int s, vector<long long> &dis, vector<int> &prev) {
+template <typename T>
+void dijkstra(const Graph &G, int s, vector<T> &dis, vector<int> &prev) {
+    using P = pair<T, int>;
+
     int N = G.size();
     dis.resize(N, INF);
     prev.resize(N, -1);
