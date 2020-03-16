@@ -30,8 +30,7 @@ struct LCA {
         while ((1 << K) < V) K++;
         parent.assign(K, vector<int>(V, -1));
         depth.assign(V, -1);
-        dfs(G, root, -1, 0);  // initialization of parent[0] & depth
-        // initialization of parent
+        dfs(G, root, -1, 0);
         for (int k = 0; k + 1 < K; k++) {
             for (int v = 0; v < V; v++) {
                 if (parent[k][v] < 0) {
@@ -50,11 +49,11 @@ struct LCA {
         }
     }
     int query(int u, int v) {
-        if (depth[u] > depth[v]) swap(u, v);
+        if (depth[u] < depth[v]) swap(u, v);  // u の方が深いとする
         int K = parent.size();
         for (int k = 0; k < K; k++) {
-            if ((depth[v] - depth[u]) >> k & 1) {
-                v = parent[k][v];
+            if ((depth[u] - depth[v]) >> k & 1) {
+                u = parent[k][u];
             }
         }
         if (u == v) return u;
