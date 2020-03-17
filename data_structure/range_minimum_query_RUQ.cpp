@@ -73,29 +73,35 @@ struct RMQ {
     }
     T query(int a, int b) { return query_sub(a, b, 0, 0, n); }
 
-    T find_rightest(int a, int b, int x) { return find_nearest_sub(a, b, x, 0, 0, n, true); }
-    T find_leftest(int a, int b, int x) { return find_nearest_sub(a, b, x, 0, 0, n, false); }
-    T find_nearest_sub(int a, int b, int x, int k, int l, int r, bool is_right) {
+    T find_rightest(int a, int b, int x) { return find_rightest_sub(a, b, x, 0, 0, n); }  // 存在しなければ a-1
+    T find_leftest(int a, int b, int x) { return find_leftest_sub(a, b, x, 0, 0, n); }    // 存在しなければ b
+    T find_rightest_sub(int a, int b, int x, int k, int l, int r) {
         eval(k);
-        if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn -1
-            return -1;
+        if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn a-1
+            return a - 1;
         } else if (k >= n - 1) {  // 自分が葉ならその位置をreturn
             return (k - (n - 1));
         } else {
-            if (is_right) {
-                int vr = find_nearest_sub(a, b, x, 2 * k + 2, (l + r) / 2, r, is_right);
-                if (vr != -1) {  // 右の部分木を見て-1以外ならreturn
-                    return vr;
-                } else {  // 左の部分木を見て値をreturn
-                    return find_nearest_sub(a, b, x, 2 * k + 1, l, (l + r) / 2, is_right);
-                }
-            } else {
-                int vl = find_nearest_sub(a, b, x, 2 * k + 1, l, (l + r) / 2, is_right);
-                if (vl != -1) {  // 左の部分木を見て-1以外ならreturn
-                    return vl;
-                } else {  // 右の部分木を見て値をreturn
-                    return find_nearest_sub(a, b, x, 2 * k + 2, (l + r) / 2, r, is_right);
-                }
+            int vr = find_rightest_sub(a, b, x, 2 * k + 2, (l + r) / 2, r);
+            if (vr != a - 1) {  // 右の部分木を見て a-1 以外ならreturn
+                return vr;
+            } else {  // 左の部分木を見て値をreturn
+                return find_rightest_sub(a, b, x, 2 * k + 1, l, (l + r) / 2);
+            }
+        }
+    }
+    T find_leftest_sub(int a, int b, int x, int k, int l, int r) {
+        eval(k);
+        if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn b
+            return b;
+        } else if (k >= n - 1) {  // 自分が葉ならその位置をreturn
+            return (k - (n - 1));
+        } else {
+            int vl = find_leftest_sub(a, b, x, 2 * k + 1, l, (l + r) / 2);
+            if (vl != b) {  // 左の部分木を見て b 以外ならreturn
+                return vl;
+            } else {  // 右の部分木を見て値をreturn
+                return find_leftest_sub(a, b, x, 2 * k + 2, (l + r) / 2, r);
             }
         }
     }
@@ -110,6 +116,7 @@ struct RMQ {
         cout << endl;
     }
 };
+
 int main() {
     int n, q;
     cin >> n >> q;

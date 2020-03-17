@@ -5,6 +5,8 @@
         http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A&lang=jp
     verified: codeforces #622 div2
         https://codeforces.com/contest/1313/submission/71736877
+    verified: AGC005 B Minimum Sum
+        https://atcoder.jp/contests/agc005/submissions/10952882
  */
 
 #include <bits/stdc++.h>
@@ -59,31 +61,37 @@ struct RMQ {
         }
     }
 
-    T find_rightest(int a, int b, int x) { return find_nearest_sub(a, b, x, 0, 0, n, true); }
-    T find_leftest(int a, int b, int x) { return find_nearest_sub(a, b, x, 0, 0, n, false); }
-    T find_nearest_sub(int a, int b, int x, int k, int l, int r, bool is_right) {
-        if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn -1
-            return -1;
+    T find_rightest(int a, int b, int x) { return find_rightest_sub(a, b, x, 0, 0, n); }
+    T find_leftest(int a, int b, int x) { return find_leftest_sub(a, b, x, 0, 0, n); }
+    T find_rightest_sub(int a, int b, int x, int k, int l, int r) {
+        if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn a-1
+            return a - 1;
         } else if (k >= n - 1) {  // 自分が葉ならその位置をreturn
             return (k - (n - 1));
         } else {
-            if (is_right) {
-                int vr = find_nearest_sub(a, b, x, 2 * k + 2, (l + r) / 2, r, is_right);
-                if (vr != -1) {  // 右の部分木を見て-1以外ならreturn
-                    return vr;
-                } else {  // 左の部分木を見て値をreturn
-                    return find_nearest_sub(a, b, x, 2 * k + 1, l, (l + r) / 2, is_right);
-                }
-            } else {
-                int vl = find_nearest_sub(a, b, x, 2 * k + 1, l, (l + r) / 2, is_right);
-                if (vl != -1) {  // 左の部分木を見て-1以外ならreturn
-                    return vl;
-                } else {  // 右の部分木を見て値をreturn
-                    return find_nearest_sub(a, b, x, 2 * k + 2, (l + r) / 2, r, is_right);
-                }
+            int vr = find_rightest_sub(a, b, x, 2 * k + 2, (l + r) / 2, r);
+            if (vr != a - 1) {  // 右の部分木を見て a-1 以外ならreturn
+                return vr;
+            } else {  // 左の部分木を見て値をreturn
+                return find_rightest_sub(a, b, x, 2 * k + 1, l, (l + r) / 2);
             }
         }
     }
+    T find_leftest_sub(int a, int b, int x, int k, int l, int r) {
+        if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn b
+            return b;
+        } else if (k >= n - 1) {  // 自分が葉ならその位置をreturn
+            return (k - (n - 1));
+        } else {
+            int vl = find_leftest_sub(a, b, x, 2 * k + 1, l, (l + r) / 2);
+            if (vl != b) {  // 左の部分木を見て b 以外ならreturn
+                return vl;
+            } else {  // 右の部分木を見て値をreturn
+                return find_leftest_sub(a, b, x, 2 * k + 2, (l + r) / 2, r);
+            }
+        }
+    }
+
     /* debug */
     inline T operator[](int a) { return query(a, a + 1); }
     void print() {
@@ -95,21 +103,25 @@ struct RMQ {
     }
 };
 
+using ll = long long;
 int main() {
-    int n, q;
-    cin >> n >> q;
-    RMQ<int> rmq(n);
-    vector<int> c(q), x(q), y(q);
-    for (int i = 0; i < q; i++) {
-        cin >> c.at(i) >> x.at(i) >> y.at(i);
+    ll N;
+    cin >> N;
+    RMQ<ll> rmq(N);
+    vector<ll> a(N);
+    for (int i = 0; i < N; i++) {
+        cin >> a.at(i);
+        rmq.set(i, a[i]);
     }
+    rmq.build();
 
-    for (int i = 0; i < q; i++) {
-        if (c[i] == 0) {
-            rmq.update(x[i], y[i]);
-        } else if (c[i] == 1) {
-            cout << rmq.query(x[i], y[i] + 1) << endl;
-        }
+    ll ans = 0;
+    for (int i = 0; i < N; i++) {
+        ll l = i - rmq.find_rightest(0, i, a[i]);
+        ll r = rmq.find_leftest(i + 1, N, a[i]) - i;
+        ans += l * r * a[i];
     }
+    cout << ans << endl;
+
     return 0;
 }
