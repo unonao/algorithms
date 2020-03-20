@@ -6,6 +6,8 @@
         シンクs, タンクt を加え、辺のcapを1としたグラフの最大流が、最大マッチングに等しい
         例: [AtCoder] ABC091 C - 2D Plane 2N Points
             https://atcoder.jp/contests/abc091/tasks/arc092_a
+    最小カットの求め方：
+        最大フローの値と最小カットの容量が一致する
 
     verified: AOJ Course GRL_6_A Network Flow - Maximum Flow
         http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A&lang=jp
