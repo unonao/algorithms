@@ -16,37 +16,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAX_N = 5000;
-const long long MOD = 1000000007;
-
-long long Com[MAX_N][MAX_N];
-
-/* init_nCk:二項係数のための前処理
-    計算量:O(MAX_N*MAX_N)
+/* Comb：nCk % p の計算のための構造体
+    前処理: O(MAX_N*MAX_N)
+    nCk(n,k): nCk % p の計算。O(1)
 */
-void init_nCk() {
-    memset(Com, 0, sizeof(Com));
-    Com[0][0] = 1;
-    for (int i = 1; i < MAX_N; ++i) {
-        Com[i][0] = 1;
-        for (int j = 1; j < MAX_N; j++) {
-            Com[i][j] = (Com[i - 1][j - 1] + Com[i - 1][j]) % MOD;
+struct Comb {
+    const int MAX_N = 5000;         // 最大値
+    vector<vector<long long>> com;  // 前計算の結果を保存
+    long long p;                    // p は素数でなくても良い
+    Comb(long long _p) : p(_p) {
+        init(p);
+    }
+    void init(long long p) {  // 動的計画法で前処理
+        com.assign(MAX_N, vector<long long>(MAX_N));
+        com[0][0] = 1;
+        for (int i = 1; i < MAX_N; ++i) {
+            com[i][0] = 1;
+            for (int j = 1; j < MAX_N; j++) {
+                com[i][j] = (com[i - 1][j - 1] + com[i - 1][j]) % p;
+            }
         }
     }
-}
-
-/*  nCk :MODでの二項係数を求める(前処理 int_nCk が必要)
-    計算量:O(1)
-*/
-long long nCk(int n, int k) {
-    assert(!(n < k));
-    assert(!(n < 0 || k < 0));
-    return Com[n][k];
-}
+    long long nCk(int n, int k) {
+        assert(!(n < k));
+        assert(!(n < 0 || k < 0));
+        return com[n][k];
+    }
+};
 
 int main() {
-    init_nCk();
+    Comb comb(1e9 + 7);
     long long n, k;
     cin >> n >> k;
-    cout << nCk(n + k - 1, k) << endl;
+    cout << comb.nCk(n + k - 1, k) << endl;
 }
