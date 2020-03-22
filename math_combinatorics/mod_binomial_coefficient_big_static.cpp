@@ -1,5 +1,6 @@
 /* mod_binomial_coefficient_big_static.cpp
-    modでの二項係数を求める
+    nCk % p を求める（p は素数）
+    （n は固定・大きめでも良い）
 
     制約：
         n<=10^9

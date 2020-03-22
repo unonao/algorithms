@@ -1,5 +1,5 @@
 /* mod_binomial_coefficient.cpp
-    modでの二項係数を求める
+    nCk % p を求める（p は素数）
 
     制約：
         n<=10^7
