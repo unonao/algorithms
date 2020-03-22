@@ -1,5 +1,5 @@
 /* mod_binomial_coefficient_dp.cpp
-    (漸化式/DP で)modでの二項係数を求める
+    (漸化式/DP で) nCk % p を求める（p は素数でなくても良い）
 
     制約：
         1≦ k ≦ n ≦ 5000
