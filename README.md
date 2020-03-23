@@ -20,12 +20,17 @@
 
 ## 組合せ論・mod(math_combinatorics)
 組み合わせや数え上げに関係するアルゴリズムです。
-#### 二項係数・mod
+#### mod
 - modint(modint.cpp): modint構造体と二項係数ライブラリまとめ
-- 二項係数(mod_binomial_coefficient.cpp): n<=10^7, k<=10^7, p(mod)は素数
-- nが巨大な二項係数(mod_binomial_coefficient_big.cpp): n<=10^9, k<=10^7, p(mod)は素数
-- nが固定の時の二項係数(mod_binomial_coefficient_big_static.cpp): n<=10^9で固定, k<=10^7, p(mod)は素数
-- 小さい数での二項係数(mod_binomial_coefficient_dp.cpp): 1≦ k ≦ n ≦ 5000, p は素数である必要がない。漸化式を用いて求める。
+
+#### 二項係数(pは素数)
+- 二項係数(mod_binomial_coefficient.cpp): 前処理 O(n)・クエリ O(1)。（n<=10^7, k<=10^7）
+- n<=10^9の二項係数(mod_binomial_coefficient_big.cpp): 前処理 O(k)・クエリ O(k)（n<=10^9, k<=10^7）
+- nが固定の時の二項係数(mod_binomial_coefficient_big_static.cpp): 前処理 O(k)・クエリ O(1)（n<=10^9で固定, k<=10^7）
+- 素数pが小さい時の二項係数(mod_binomial_coefficient_lucas.cpp): 前処理 O(p^2)・クエリ O(log n)（n,k<=10^18, p<=5000）。Lucas の定理を利用
+
+#### 二項係数(pは素数でなくて良い)
+- 小さい数での二項係数(mod_binomial_coefficient_dp.cpp): 前処理 O(n^2)・クエリ O(1)（1≦ k ≦ n ≦ 5000）
 
 
 ## 解析学(calculus)
@@ -75,7 +80,8 @@
 - 橋・関節点列挙(low_link.cpp): グラフ上の橋と関節点をO(V+E)で列挙する
 
 #### その他
-- 最小全域木(minimum_spanning_tree.cpp): クラスカル法によって最小全域木を求める構造体
+- 隣接リストの最小全域木(minimum_spanning_tree_kruskal.cpp): クラスカル法によって最小全域木を求める
+- 隣接行列の最小全域木(minimum_spanning_tree_prim.cpp): プリム法によって最小全域木を求める
 
 ## グラフのネットワークフロー(graph_flow)
 #### 最大流
