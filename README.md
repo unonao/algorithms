@@ -9,7 +9,8 @@
 - 拡張Euclidの互除法(gcd_extend.cpp): ax+by=gcd(a,b)の解を1つ求める
 - 最小公倍数(lcm.cpp): gcdを利用して最小公倍数を求める
 - 素因数分解した最小公倍数(lcm_prime.cpp): 素因数分解の形で最小公倍数を求める(オーバーフローする場合など)
-- 約数列挙(divisor.cpp):
+- 約数列挙(divisor.cpp)
+- 約数の個数(divisor_num.cpp)
 - べき乗(power.cpp)
 
 #### 素数
@@ -96,3 +97,6 @@
 #### 典型的
 - 最長増加部分列(longest_increasing_subsequence.cpp): LISを求める。広義単調でも可
 - 最長減少部分列(longest_decreasing_subsequence.cpp): LDS?を求める。広義減少でも可
+
+## 文字列
+- トライ木(trie_tree.cpp)
