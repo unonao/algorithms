@@ -1,10 +1,11 @@
-/* ccw.cpp
-    3点(点と線分)の位置関係を求める
+/* is_contain_in_triangle.cpp
+    点が三角形に含まれているか判定する
 
     verified:
-        AOJ Course CGL_1_C Points/Vectors - Counter-Clockwise
-        http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C&lang=jp
+        AOJ 0143
+        http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0143
 */
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -39,32 +40,44 @@ int ccw(const P& a, const P& b, const P& c) {
     return 0;                                            // 0: a-c-bで直線
 }
 
+/* is_contain_in_triangle(p, a,b,c)
+    p が 三角形abc に含まれていれば true を返す
+*/
+bool is_contain_in_triangle(const P& p, const P& a, const P& b, const P& c) {
+    int r1 = ccw(p, b, c), r2 = ccw(p, c, a), r3 = ccw(p, a, b);
+    if (r1 == r2 && r2 == r3 && (r1 == 1 || r1 == -1)) return true;
+    return false;
+}
+
 int main() {
-    double px, py;
-    cin >> px >> py;
-    P a(px, py);
-    cin >> px >> py;
-    P b(px, py);
-    int q;
-    cin >> q;
-    vector<P> cs(q);
-    for (int i = 0; i < q; i++) {
-        cin >> px >> py;
-        P c(px, py);
-        cs[i] = c;
+    int n;
+    cin >> n;
+    vector<int> ans(n);
+    for (int i = 0; i < n; i++) {
+        D x, y;
+        P p[3];
+        for (int j = 0; j < 3; j++) {
+            cin >> x >> y;
+            P tmp(x, y);
+            p[j] = tmp;
+        }
+        cin >> x >> y;
+        P k(x, y);
+        cin >> x >> y;
+        P s(x, y);
+
+        if (is_contain_in_triangle(k, p[0], p[1], p[2]) ^ is_contain_in_triangle(s, p[0], p[1], p[2])) {
+            ans[i] = 1;
+        } else {
+            ans[i] = 0;
+        }
     }
-    for (int i = 0; i < q; i++) {
-        P c = cs[i];
-        if (ccw(a, b, c) == 1) {
-            cout << "COUNTER_CLOCKWISE" << endl;
-        } else if (ccw(a, b, c) == -1) {
-            cout << "CLOCKWISE" << endl;
-        } else if (ccw(a, b, c) == 2) {
-            cout << "ONLINE_BACK" << endl;
-        } else if (ccw(a, b, c) == -2) {
-            cout << "ONLINE_FRONT" << endl;
-        } else if (ccw(a, b, c) == 0) {
-            cout << "ON_SEGMENT" << endl;
+
+    for (int i = 0; i < n; i++) {
+        if (ans[i]) {
+            cout << "OK\n";
+        } else {
+            cout << "NG\n";
         }
     }
     return 0;

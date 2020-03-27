@@ -45,6 +45,7 @@
 ## 幾何学(geometry)
 - 基本(basic.cpp): 基本となる点, 線, 円, 多角形を定義
 - 3点の関係(ccw.cpp): 反時計, 時計回り, 一直線などの 3点の関係を判定
+- 点と三角形の包含関係(is_contain_in_triangle.cpp): 三角形に点が含まれるか判定する
 
 
 ## データ構造(data_structure)
