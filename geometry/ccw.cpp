@@ -24,17 +24,19 @@ const D PI = std::acos(-1);
 const D EPS = 1e-10;
 const D INF = 1e12;
 
+int sgn(D a) { return (a < -EPS) ? -1 : (a > EPS) ? 1 : 0; }  // 比較
+
 /* ccw(a,b,c)
     出力:
     1: a-bから見てcは反時計, -1: a-bから見てcは時計
     2: c-a-bで直線, -2: a-b-cで直線, 0: a-c-bで直線
 */
 int ccw(const P& a, const P& b, const P& c) {
-    if (cross(b - a, c - a) > EPS) return 1;         // 1: a-bから見てcは反時計
-    if (cross(b - a, c - a) < -EPS) return -1;       //-1: a-bから見てcは時計
-    if (dot(b - a, c - a) < -EPS) return 2;          // 2: c-a-bで直線
-    if (norm(b - a) < norm(c - a) - EPS) return -2;  //-2: a-b-cで直線
-    return 0;                                        // 0: a-c-bで直線
+    if (sgn(cross(b - a, c - a)) == 1) return 1;         // 1: a-bから見てcは反時計
+    if (sgn(cross(b - a, c - a)) == -1) return -1;       //-1: a-bから見てcは時計
+    if (sgn(dot(b - a, c - a)) == -1) return 2;          // 2: c-a-bで直線
+    if (sgn(norm(c - a) - norm(b - a)) == 1) return -2;  //-2: a-b-cで直線
+    return 0;                                            // 0: a-c-bで直線
 }
 
 int main() {

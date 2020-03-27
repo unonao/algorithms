@@ -30,6 +30,9 @@ const D PI = std::acos(-1);
 const D EPS = 1e-10;
 const D INF = 1e12;
 
+// 比較
+int sgn(D a) { return (a < -EPS) ? -1 : (a > EPS) ? 1 : 0; }
+
 struct L : vector<P> {  // 線分, 直線
     L(const P& a, const P& b) { push_back(a), push_back(b); }
     friend ostream& operator<<(ostream& os, const L& l) { return os << l[0] << "-" << l[1]; }
