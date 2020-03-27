@@ -22,29 +22,16 @@ struct Trie {
         vector<int> next;    // 子の頂点番号を格納。存在しなければ-1
         vector<int> accept;  // 末端がこの頂点になる文字列の str_id を保存
         int c;               // base からの間隔をint型で表現したもの
-        int exist;           // いくつの文字列が子孫の頂点を形成しているか
         int common;          // いくつの文字列がこの頂点を共有しているか
-        Node(int c_) : c(c_), exist(0), common(0) {
+        Node(int c_) : c(c_), common(0) {
             next.assign(char_size, -1);
         }
-        friend ostream &operator<<(ostream &os, const Node &n) { return os << "c:" << (char)(n.c + base) << " common:" << n.common << " exist:" << n.exist << " accept:" << (int)n.accept.size() << "\n"; }  // debug 用
+        friend ostream &operator<<(ostream &os, const Node &n) { return os << "c:" << (char)(n.c + base) << " common:" << n.common << " accept:" << (int)n.accept.size() << "\n"; }  // debug 用
     };
     vector<Node> nodes;  // trie 木本体
     int root;
     Trie() : root(0) {
         nodes.push_back(Node(root));
-    }
-
-    // 頂点の更新用関数
-    void update(int node_id, int child_id, int str_id) {  // 子と自身を更新
-        update_direct(node_id, str_id);
-        ++nodes[node_id].exist;
-        update_child(child_id, str_id);
-    }
-    void update_direct(int node_id, int str_id) {  // 自身を更新
-        ++nodes[node_id].common;
-    }
-    void update_child(int child_id, int str_id) {  // 子を更新
     }
 
     // 文字列の挿入
@@ -57,14 +44,14 @@ struct Trie {
                 next_id = (int)nodes.size();
                 nodes.push_back(Node(c));
             }
-            update(node_id, next_id, str_id);
+            ++nodes[node_id].common;
             node_id = next_id;
         }
-        update_direct(node_id, str_id);
+        ++nodes[node_id].common;
         nodes[node_id].accept.push_back(str_id);
     }
     void insert(const string &str) {
-        insert(str, nodes[0].exist);
+        insert(str, nodes[0].common);
     }
 
     // 文字列の検索
@@ -88,7 +75,7 @@ struct Trie {
 
     // 挿入した文字列の数
     int count() const {
-        return (nodes[0].exist);
+        return (nodes[0].common);
     }
     // Trie木のノード数
     int size() const {
