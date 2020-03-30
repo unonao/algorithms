@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #define ALL(obj) begin(obj), end(obj)
+#define debug(x) cerr << #x << ": " << x << '\n'
 using namespace std;
 template <class T>
 vector<T> make_vec(size_t a) {
@@ -29,13 +30,7 @@ bool chmin(T &a, const T &b) {
 using ll = long long;
 using ull = unsigned long long;
 const int INF = 2100100100;
-const int MOD = 1e9 + 7;
-
-ll N, M, K, Q, W, H, L, R, C;
-string S;
+// const int MOD = 1e9 + 7;
 
 int main() {
-    cin >> N;
-
-    return 0;
 }
