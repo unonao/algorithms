@@ -99,6 +99,7 @@
 #### 典型的
 - 最長増加部分列(longest_increasing_subsequence.cpp): LISを求める。広義単調でも可
 - 最長減少部分列(longest_decreasing_subsequence.cpp): LDS?を求める。広義減少でも可
+- 全方位木DP(rerooting.cpp)
 
 ## 文字列
 - トライ木(trie_tree.cpp)
