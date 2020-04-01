@@ -88,10 +88,10 @@ struct Comb {
     Comb(int SIZE) : fact_(SIZE, 1), fact_inv_(SIZE, 1), inv_(SIZE, 1) { init(SIZE); }
     void init(int SIZE) {
         fact_.assign(SIZE, 1), fact_inv_.assign(SIZE, 1), inv_.assign(SIZE, 1);
-        int MOD = fact_[0].getmod();
+        int mod = fact_[0].getmod();
         for (int i = 2; i < SIZE; i++) {
             fact_[i] = fact_[i - 1] * i;
-            inv_[i] = -inv_[MOD % i] * (MOD / i);
+            inv_[i] = -inv_[mod % i] * (mod / i);
             fact_inv_[i] = fact_inv_[i - 1] * inv_[i];
         }
     }
