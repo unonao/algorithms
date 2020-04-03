@@ -41,7 +41,7 @@ struct Rerooting {
         long long dp;
         DP(long long dp_) : dp(dp_) {}
     };
-    const DP unit_dp = DP(0);                                                            // 単位元はしっかり定義する(末端でもadd_rootされるので注意)
+    const DP identity = DP(0);                                                           // 単位元はしっかり定義する(末端でもadd_rootされるので注意)
     function<DP(DP, DP, long long)> merge = [](DP dp_cum, DP d, long long cost) -> DP {  // d:辺eに対応する部分木のdpの値  cost:eのコスト
         return DP(max(dp_cum.dp, d.dp + cost));
     };
@@ -64,21 +64,21 @@ struct Rerooting {
 
     Rerooting(int N) : G(N) {
         dp.resize(N);
-        ans.assign(N, unit_dp);
+        ans.assign(N, identity);
     }
 
     void add_edge(int a, int b, long long c = 1) {
         G[a].push_back({a, b, c});
     }
     void build() {
-        dfs(0);           // 普通に木DP
-        bfs(0, unit_dp);  // 残りの部分木に対応するDPを計算
+        dfs(0);            // 普通に木DP
+        bfs(0, identity);  // 残りの部分木に対応するDPを計算
     }
 
     DP dfs(int v, int p = -1) {  // 頂点v, 親p
-        DP dp_cum = unit_dp;
+        DP dp_cum = identity;
         int deg = G[v].size();
-        dp[v] = vector<DP>(deg, unit_dp);
+        dp[v] = vector<DP>(deg, identity);
         for (int i = 0; i < deg; i++) {
             int u = G[v][i].to;
             if (u == p) continue;
@@ -93,7 +93,7 @@ struct Rerooting {
             if (G[v][i].to == p) dp[v][i] = dp_p;
         }
 
-        vector<DP> dp_l(deg + 1, unit_dp), dp_r(deg + 1, unit_dp);  // 累積的なDP
+        vector<DP> dp_l(deg + 1, identity), dp_r(deg + 1, identity);  // 累積的なDP
         for (int i = 0; i < deg; i++) {
             dp_l[i + 1] = merge(dp_l[i], dp[v][i], G[v][i].cost);
         }
