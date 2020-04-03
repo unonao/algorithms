@@ -52,6 +52,7 @@ struct Rerooting {
 
     // グラフの定義
     struct Edge {
+        int from;
         int to;
         long long cost;
     };
