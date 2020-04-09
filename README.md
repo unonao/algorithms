@@ -33,6 +33,9 @@
 #### 二項係数(pは素数でなくて良い)
 - 小さい数での二項係数(mod_binomial_coefficient_dp.cpp): 前処理 O(n^2)・クエリ O(1)（1≦ k ≦ n ≦ 5000）
 
+#### 二項係数(modを取らない)
+- 小さい数でmodを取らない二項係数(binomial_coefficient_for_small.cpp): nは50程度まで
+
 
 ## 解析学(calculus)
 解析学に関係するアルゴリズムです。
