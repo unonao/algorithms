@@ -71,9 +71,9 @@ struct RMQ {
     }
     T query(int a, int b) { return query_sub(a, b, 0, 0, n); }
 
-    T find_rightest(int a, int b, int x) { return find_rightest_sub(a, b, x, 0, 0, n); }  // 存在しなければ a-1
-    T find_leftest(int a, int b, int x) { return find_leftest_sub(a, b, x, 0, 0, n); }    // 存在しなければ b
-    T find_rightest_sub(int a, int b, int x, int k, int l, int r) {
+    int find_rightest(int a, int b, T x) { return find_rightest_sub(a, b, x, 0, 0, n); }  // 存在しなければ a-1
+    int find_leftest(int a, int b, T x) { return find_leftest_sub(a, b, x, 0, 0, n); }    // 存在しなければ b
+    int find_rightest_sub(int a, int b, T x, int k, int l, int r) {
         eval(k);
         if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn a-1
             return a - 1;
@@ -88,7 +88,7 @@ struct RMQ {
             }
         }
     }
-    T find_leftest_sub(int a, int b, int x, int k, int l, int r) {
+    int find_leftest_sub(int a, int b, T x, int k, int l, int r) {
         eval(k);
         if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn b
             return b;

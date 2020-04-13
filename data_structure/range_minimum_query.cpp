@@ -61,9 +61,9 @@ struct RMQ {
         }
     }
 
-    T find_rightest(int a, int b, int x) { return find_rightest_sub(a, b, x, 0, 0, n); }
-    T find_leftest(int a, int b, int x) { return find_leftest_sub(a, b, x, 0, 0, n); }
-    T find_rightest_sub(int a, int b, int x, int k, int l, int r) {
+    int find_rightest(int a, int b, T x) { return find_rightest_sub(a, b, x, 0, 0, n); }
+    int find_leftest(int a, int b, T x) { return find_leftest_sub(a, b, x, 0, 0, n); }
+    int find_rightest_sub(int a, int b, T x, int k, int l, int r) {
         if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn a-1
             return a - 1;
         } else if (k >= n - 1) {  // 自分が葉ならその位置をreturn
@@ -77,7 +77,7 @@ struct RMQ {
             }
         }
     }
-    T find_leftest_sub(int a, int b, int x, int k, int l, int r) {
+    int find_leftest_sub(int a, int b, T x, int k, int l, int r) {
         if (dat[k] > x || r <= a || b <= l) {  // 自分の値がxより大きい or [a,b)が[l,r)の範囲外ならreturn b
             return b;
         } else if (k >= n - 1) {  // 自分が葉ならその位置をreturn
