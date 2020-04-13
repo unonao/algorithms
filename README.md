@@ -105,5 +105,9 @@
 - 最長減少部分列(longest_decreasing_subsequence.cpp): LDS?を求める。広義減少でも可
 - 全方位木DP(rerooting.cpp)
 
-## 文字列
+## 文字列(string)
 - トライ木(trie_tree.cpp)
+
+
+## その他(others)
+- ランレングス圧縮(run_length.cpp)
