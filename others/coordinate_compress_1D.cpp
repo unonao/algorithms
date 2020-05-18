@@ -11,21 +11,20 @@
 using namespace std;
 
 /* compress
-    X を座標圧縮した結果を返す
+    X を座標圧縮して書き換える（副作用）
+    返り値: ソート済みの値
     計算量: O(n log n)
 */
 template <typename T>
-vector<int> compress(const vector<T> &X) {
+vector<T> compress(vector<T> &X) {
     vector<T> vals = X;
     sort(vals.begin(), vals.end());
     // 隣り合う重複を削除(unique), 末端のゴミを削除(erase)
     vals.erase(unique(vals.begin(), vals.end()), vals.end());
-    vector<int> ret;
     for (int i = 0; i < (int)X.size(); i++) {
-        int id = lower_bound(vals.begin(), vals.end(), X[i]) - vals.begin();
-        ret.push_back(id);
+        X[i] = lower_bound(vals.begin(), vals.end(), X[i]) - vals.begin();
     }
-    return ret;
+    return vals;
 }
 
 int main() {
@@ -35,7 +34,8 @@ int main() {
     for (int i = 0; i < N; i++) {
         cin >> a.at(i);
     }
-    for (auto b : compress(a)) {
+    compress(a);
+    for (auto b : a) {
         cout << b << "\n";
     }
 }

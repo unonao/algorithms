@@ -111,4 +111,5 @@
 
 ## その他(others)
 - 1D 座標圧縮(coordinate_compress_1D.cpp)
+- 2D 座標圧縮(coordinate_compress_2D.cpp)
 - ランレングス圧縮(run_length.cpp)
