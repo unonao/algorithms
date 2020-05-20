@@ -46,8 +46,9 @@ int main() {
     vector<long long> X = compress(X1, X2);
     vector<long long> Y = compress(Y1, Y2);
 
-    int MAX = max((int)X.size(), (int)Y.size()) + 3;
-    vector<vector<int>> G(MAX, vector<int>(MAX));
+    int w = (int)X.size();
+    int h = (int)Y.size();
+    vector<vector<int>> G(w, vector<int>(h));
     // imos法で塗りつぶし
     for (int i = 0; i < N; i++) {
         G[X1[i]][Y1[i]]++;
@@ -55,20 +56,20 @@ int main() {
         G[X1[i]][Y2[i]]--;
         G[X2[i]][Y1[i]]--;
     }
-    for (int x = 1; x < (int)X.size(); x++) {
-        for (int y = 0; y < (int)Y.size(); y++) {
+    for (int x = 1; x < w; x++) {
+        for (int y = 0; y < h; y++) {
             G[x][y] += G[x - 1][y];
         }
     }
-    for (int x = 0; x < (int)X.size(); x++) {
-        for (int y = 1; y < (int)Y.size(); y++) {
+    for (int x = 0; x < w; x++) {
+        for (int y = 1; y < h; y++) {
             G[x][y] += G[x][y - 1];
         }
     }
 
     long long ans = 0;
-    for (int x = 0; x < (int)X.size() - 1; x++) {
-        for (int y = 0; y < (int)Y.size() - 1; y++) {
+    for (int x = 0; x < w - 1; x++) {
+        for (int y = 0; y < h - 1; y++) {
             if (G[x][y]) {
                 ans += (X[x + 1] - X[x]) * (Y[y + 1] - Y[y]);
             }
