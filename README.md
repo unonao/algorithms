@@ -43,7 +43,7 @@
 - 高速フーリエ変換を利用した畳み込み(fft.cpp): 畳み込み(sum(a[j]b[k-j]))を計算する
 
 ## 線形代数(math_linear_algebra)
-未作成
+- 行列ライブラリ(Matrix.cpp)
 
 ## 幾何学(geometry)
 - 基本(basic.cpp): 基本となる点, 線, 円, 多角形を定義
