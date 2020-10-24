@@ -51,6 +51,8 @@
 
 - 前計算ありベル数(bell_number_preprocess.cpp)
 - スターリング数の和で計算するベル数(bell_number_stirling.cpp)
+- 高々 k 個のブロックに分割(partition_number_at_most_k.cpp)
+- 丁度 k 個のブロックに分割(partition_number_with_k.cpp)
 
 ## 解析学(calculus)
 
