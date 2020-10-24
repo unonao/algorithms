@@ -53,6 +53,8 @@
 - スターリング数の和で計算するベル数(bell_number_stirling.cpp)
 - 高々 k 個のブロックに分割(partition_number_at_most_k.cpp)
 - 丁度 k 個のブロックに分割(partition_number_with_k.cpp)
+- 二項係数による前計算あり第 2 種スターリング数(stirling_number_of_the_second_kind_binomial.cpp)
+- DP による第 2 種スターリング数(stirling_number_of_the_second_kind_DP.cpp)
 
 ## 解析学(calculus)
 
