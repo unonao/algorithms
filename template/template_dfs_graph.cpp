@@ -31,7 +31,7 @@ int main() {
         int a, b;
         cin >> a >> b;
         G[a].push_back({b});
-        // G[b].push_back({a});
+        G[b].push_back({a});
     }
 
     seen.assign(V, false);  // 初期化
